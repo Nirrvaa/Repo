@@ -1,0 +1,131 @@
+$height: 30rem
+#carousel 
+  perspective: 300px
+  font-size: 0
+  padding: 2rem 0 4rem
+  overflow: hidden
+  
+  ~ button 
+    color: #fff
+    display: block
+    text-decoration: none
+    font-size: 10rem
+    font-weight: 900
+    transition: .2s
+    position: absolute
+    line-height: 0
+    top: 50%
+    border: 0 none
+   
+    &:hover 
+      color: #377c57
+      text-shadow: 0 0 20px #fff
+      cursor: pointer
+
+    &:nth-of-type(1)
+      left: 2.5%
+    &:nth-of-type(2) 
+      right: 2.5%
+#spinner  
+  transform-style: preserve-3d
+  transform: translateX(20%)
+  height: 30rem
+  margin: 0 auto
+  transition: .5s
+  
+  >li 
+    display: block
+    width: 60%
+    height: $height
+    position: absolute
+    background: #798486
+    border: 1px solid #69394f
+    font-size: 5rem
+    text-align: center
+    vertical-align: baseline
+    overflow: hidden
+    color: #fff
+  
+  article
+    position: relative
+    color: #fff
+    overflow: hidden
+    cursor: pointer
+    transition: .5s
+    
+    >header 
+      position: absolute
+      top: 0
+      left: 0
+      font-size: 1.5rem
+      background: rgba(0,0,0,0.5)
+      overflow: hidden
+      padding: 0.25rem 1rem
+      transition: 1s
+      width: 100%
+      z-index: 2
+      
+      h3
+        text-align: left
+        white-space: nowrap
+        
+.viktorina
+  background: #e7a458
+  
+  .viktorina_header 
+    background: rgba(255,255,255,0.3)
+    
+    h1 
+      text-align: center
+      padding: 2%
+      font-size: 3rem
+      font-family: impact
+      color: #377c57
+  
+  .viktorina_content 
+    position: relative
+  
+.city 
+  position: relative
+    
+
+
+.description
+  position: absolute
+  width: 100%
+  bottom: 0
+  word-wrap: break-word
+  height: 2rem
+  overflow: hidden
+  text-align: left
+  background: rgba(0,0,0,0.5)
+  transition: .5s
+  cursor: pointer
+  z-index: 2
+    
+  h4
+    font-size: 1.5rem
+    padding: 0.2rem
+  p 
+    font-size: 1rem
+    text-align: justify
+    padding: 1rem
+    height: 10rem
+    overflow: auto
+.photos 
+  transform-style: preserve-3d
+  transition: .5s
+  position: relative
+  width: 100%
+  height: $height
+  
+  div
+    backface-visibility: hidden
+    position: absolute
+    width: 100%
+    height: $height
+    background-size: auto 100%
+    background-position: center
+    background-repeat: no-repeat
+    
+    

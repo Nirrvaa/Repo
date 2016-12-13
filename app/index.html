@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
   <meta charset="utf-8">
   <title>Document</title>
+  
+  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/libs.min.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/libs.min.js" defer></script>
+  <script src="js/database.js" defer></script>
   <script src="js/common.js" defer></script>  
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
+  <main class="viktorina">
+
+    <header class="viktorina_header">
+      <h1>Викторина</h1>
+    </header>
+    <section class="viktorina_content">
+      <section class="viktorina_questions">
+        <section class="city">
+          <div id="carousel">
+            <ul id="spinner">
+
+            </ul>
+          </div>
+          <button class="ss-icon left">&lt;</button>
+          <button class="ss-icon right">&gt;</button>
+        </section>
+
+      </section>
+
+      <section class="viktorina_answers">
+        <nav class="answers_list">
+        <button>Ответить:</button>
+        <ul>
+        <li>Уфа</li>
+        <li>Красноярск</li>
+        <li>Барнаул</li>
+        <li>Иркутск</li>
+        <li>Кемерово</li>
+        <li>Рязань</li>
+        <li>Курск</li>
+        <li>Ставрополь</li>
+        <li>Нижний Тагил</li>
+        <li>Владимир</li>
+        <li>Пермь</li>
+      </ul>
+        </nav>
+      </section>
+    </section>
   
+  </main>
 </body>
 
 </html>
