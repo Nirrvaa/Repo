@@ -36,10 +36,10 @@ City.prototype.styles = function() {
   
     photos.onmouseup = function(q) {
     if (q.pageY - y > 50) {
-      ang -= (360/photos.children.length) - 0,0001; 
+      ang -= (360/photos.children.length) - 0.0001; 
      
   } else if (y - q.pageY  > 50) {
-    ang += (360/photos.children.length) + 0,0001; 
+    ang += (360/photos.children.length) + 0.0001; 
     
   }  
     photos.style.transform = "rotateX(" + ang + "deg)"; 
