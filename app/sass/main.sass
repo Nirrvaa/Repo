@@ -138,20 +138,18 @@ $height: 30rem
   width: auto
   z-index: 2
   padding: 0.2rem
-  label 
+  div 
     display: block
     width: 1.5rem
     height: 1.5rem
     border-radius: 50%
     margin: 0.3rem
     background: rgba(0,0,0,0.5)
-    border: 0.3rem solid rgba(255,255,255,0.8) 
+    border: 0.3rem solid #fff 
     cursor: pointer
-  input[type=radio]
-    display: none
-    &:checked + label
-      background-color: rgba(255,255,255,0.4)
-      border-color: rgba(255,255,255,0.8)
+    &.checked
+      background-color: rgba(55, 124, 87, .8);
+      border-color: #fff
   
     
       

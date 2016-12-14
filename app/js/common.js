@@ -16,6 +16,7 @@ City.prototype.styles = function() {
   this.wrapper.setAttribute("style", "transform-origin: 50% 50% -"  + Ztranslate + "px;");
   list.forEach(function(item,i) {
   var smallButtons = item.querySelector('.points').children;
+
   smallButtons.forEach = Array.prototype.forEach;
   item.setAttribute("style", "transform: rotateY(" + (360/list.length)*i + "deg); transform-origin: 50% 50% -"  + Ztranslate + "px;");
   var photos = item.querySelector('.photos');
@@ -23,26 +24,16 @@ City.prototype.styles = function() {
   photos.setAttribute("style", "transform-origin: 50% 50% -"  + Ztranslate2 + "px;");
   photos.children.forEach = Array.prototype.forEach;
   photos.children.forEach(function(it,j) {
-    
+  if (!j) {
+    smallButtons[j].classList.add('checked');
+  }  
   it.style.transform =  "rotateX(" + (360/photos.children.length)*j + "deg)"; 
   it.style.transformOrigin = "50% 50% -"  + Ztranslate2 + "px";
   /*
     it.setAttribute("style", "transform: rotateX(" + (360/photos.children.length)*j + "deg); transform-origin: 50% 50% -"  + Ztranslate2 + "px;");
     */
   }); 
-    
-    
-function goTo(obj,direction,numb) {
-  if (direction) {
-    obj.forEach(function(item,i) {
-      
-    });
-  }
-}
-  
-  
-
-    var ang = 0;
+  var ang = 0;
   photos.addEventListener('mousedown', function(e) {
   var y = e.pageY;
   
@@ -54,11 +45,11 @@ function goTo(obj,direction,numb) {
     ang += (360/photos.children.length) - 0.001; 
     
   }  
-    smallButtons.forEach(function(button) {
-      button.removeAttribute('checked');
+    smallButtons.forEach(function(a,s) {
+        a.classList.remove('checked');
     });
     var coef = Math.abs((Math.round(ang) %360))/(360/smallButtons.length)
-    smallButtons[coef].setAttribute('checked','checked');
+    smallButtons[coef].classList.add('checked');
     photos.style.transform = "rotateX(" + ang + "deg)"; 
   }
   });
@@ -68,7 +59,11 @@ function goTo(obj,direction,numb) {
   smallButtons.forEach(function(q,w) {
     q.addEventListener('click',function() {
       photos.style.transform = "rotateX(" + (360/smallButtons.length)*w + "deg)";
-      ang = (360/smallButtons.length)*2;
+      ang = (360/smallButtons.length)*w;
+      smallButtons.forEach(function(a,s) {
+        a.classList.remove('checked');
+      });
+      q.classList.add('checked');
     });
   });
    /*
@@ -145,17 +140,13 @@ Memorial.prototype.makeItem = function(item) {
   section.appendChild(this.makingElementsAndClasses({element:'p',content:this.description}));
   article.appendChild(section);
   var photos = this.makingElementsAndClasses({element:'section',classes:['photos']});
-  var points = this.makingElementsAndClasses({element:'ul',classes:['points']});
+  var points = this.makingElementsAndClasses({element:'nav',classes:['points']});
  
   this.photos.forEach(function(it,i) {
     var item = self.makingElementsAndClasses({element:'div'});
     item.style.backgroundImage = 'url('+ it +')';
     photos.appendChild(item);
-    var input = self.makingElementsAndClasses({element:'input',attributes: {type: 'radio', id: self.id + i, name: self.id}});
-    if (!i) input.setAttribute('checked', 'checked');
-    points.appendChild(input);
-    var label = self.makingElementsAndClasses({element:'label',attributes: {for:self.id + i}});
-    points.appendChild(label);
+    points.appendChild(document.createElement('div'));
   });
   article.appendChild(points);  
   article.appendChild(photos);     
