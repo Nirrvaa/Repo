@@ -15,6 +15,8 @@ City.prototype.styles = function() {
   list.forEach = Array.prototype.forEach;
   this.wrapper.setAttribute("style", "transform-origin: 50% 50% -"  + Ztranslate + "px;");
   list.forEach(function(item,i) {
+  var smallButtons = item.querySelector('.points').children;
+  smallButtons.forEach = Array.prototype.forEach;
   item.setAttribute("style", "transform: rotateY(" + (360/list.length)*i + "deg); transform-origin: 50% 50% -"  + Ztranslate + "px;");
   var photos = item.querySelector('.photos');
   var Ztranslate2 =  (photos.children[0].clientHeight/2) * Math.tan((90-(180/photos.children.length))/57.2958); 
@@ -30,59 +32,55 @@ City.prototype.styles = function() {
   }); 
     
     
+function goTo(obj,direction,numb) {
+  if (direction) {
+    obj.forEach(function(item,i) {
+      
+    });
+  }
+}
+  
+  
+
     var ang = 0;
   photos.addEventListener('mousedown', function(e) {
   var y = e.pageY;
   
     photos.onmouseup = function(q) {
     if (q.pageY - y > 50) {
-      ang -= (360/photos.children.length) - 0.0001; 
-     
+      ang -= (360/photos.children.length) + 0.001; 
+      
   } else if (y - q.pageY  > 50) {
-    ang += (360/photos.children.length) + 0.0001; 
+    ang += (360/photos.children.length) - 0.001; 
     
   }  
+    smallButtons.forEach(function(button) {
+      button.removeAttribute('checked');
+    });
+    var coef = Math.abs((Math.round(ang) %360))/(360/smallButtons.length)
+    smallButtons[coef].setAttribute('checked','checked');
     photos.style.transform = "rotateX(" + ang + "deg)"; 
   }
-   
-    
-    
-    
   });
-   photos.addEventListener('touchstart', function(e) {
-  var y = e.pageY;
+
+
   
-    photos.ontouchend = function(q) {
-    if (q.pageY - y > 50) {
-      ang -= (360/photos.children.length); 
-     
-  } else if (y - q.pageY  > 50) {
-    ang += (360/photos.children.length); 
-    
-  }  
-    photos.style.transform = "rotateX(" + ang + "deg)"; 
-  }
-   
-    
-    
-    
-  },false);  
-    /*
+  smallButtons.forEach(function(q,w) {
+    q.addEventListener('click',function() {
+      photos.style.transform = "rotateX(" + (360/smallButtons.length)*w + "deg)";
+      ang = (360/smallButtons.length)*2;
+    });
+  });
+   /*
   photos.addEventListener('mouseup', function(e) {
     var y = e.pageY;
     console.log(y);
   
   });
   */ 
-    
-    
-    
+
   }); 
 
-  
-  
-  
-  
   var angle = 0;
   var width = 540;
   function galleryspin(sign) { 
@@ -153,10 +151,14 @@ Memorial.prototype.makeItem = function(item) {
     var item = self.makingElementsAndClasses({element:'div'});
     item.style.backgroundImage = 'url('+ it +')';
     photos.appendChild(item);
-    points.appendChild(document.createElement('li'));
+    var input = self.makingElementsAndClasses({element:'input',attributes: {type: 'radio', id: self.id + i, name: self.id}});
+    if (!i) input.setAttribute('checked', 'checked');
+    points.appendChild(input);
+    var label = self.makingElementsAndClasses({element:'label',attributes: {for:self.id + i}});
+    points.appendChild(label);
   });
-article.appendChild(points);  
- article.appendChild(photos);     
+  article.appendChild(points);  
+  article.appendChild(photos);     
       
   li.appendChild(article);    
   
@@ -178,3 +180,4 @@ answers.addEventListener('click',function() {
     ul.classList.remove('opened');
   }
 });
+
