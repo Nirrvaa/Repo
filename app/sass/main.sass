@@ -1,55 +1,83 @@
-$height: 30rem
+$heightSmall: 3rem
+$heightLarge: 30rem
+$height: $heightLarge + $heightSmall
+$width: 80%
 #carousel 
   perspective: 300px
   font-size: 0
-  padding: 2rem 0 4rem
+  //padding: 2rem 0 4rem
   overflow: hidden
-  
+  //margin: 3rem 0
   ~ button 
     color: #fff
-    display: block
+    display: flex
+    align-items: center
     text-decoration: none
-    font-size: 10rem
-    font-weight: 900
     transition: .2s
     position: absolute
     line-height: 0
-    top: 50%
-    border: 0 none
+    width: $width/2
     cursor: pointer
+    left: (100% - $width)*1.5
+    border-radius: 15px
+    background-color: rgba(255,255,255,0.4)
+    border: 2px solid rgba(0,0,0,0.4)
+    height: 2.1rem
     &:hover 
-      color: #377c57
-      text-shadow: 0 0 20px #fff
-      
-
+      background-color: rgba(0,0,0,0.5)
     &:nth-of-type(1)
-      left: 2.5%
+      top: -2.5rem
+      div 
+        border-top: 0rem solid transparent
+        border-bottom: 1.5rem solid rgba(0,0,0,0.5)
+        border-left: 10rem solid transparent
+        border-right: 10rem solid transparent
+        margin: auto
+        width: 20rem
+        line-height: 0
+        transition: .2s
+    &:hover
+      &:nth-of-type(1) div
+        border-bottom: 1.5rem solid rgb(241,200,155)
+    &:hover
+      &:nth-of-type(2) div
+        border-top: 1.5rem solid rgb(241,200,155)    
     &:nth-of-type(2) 
-      right: 2.5%
+      bottom: -2rem
+      div
+        border-bottom: 0rem solid transparent
+        border-top: 1.5rem solid rgba(0,0,0,0.5)
+        border-left: 10rem solid transparent
+        border-right: 10rem solid transparent
+        margin: auto
+        width: 20rem
+        line-height: 0
+        transition: .2s
 #spinner  
   transform-style: preserve-3d
-  transform: translateX(20%)
-  height: 30rem
+  transform: translateX((100% - $width)/2)
+  height: $height
   margin: 0 auto
   transition: .5s
   
   >li 
     display: block
-    width: 60%
+    width: $width
     height: $height
     position: absolute
-    background: #798486
-    border: 1px solid #69394f
+    
     font-size: 5rem
     text-align: center
     vertical-align: baseline
     overflow: hidden
     color: #fff
+    backface-visibility: hidden
     
   article
     position: relative
+    background: rgba(255,255,255,0.4)
+    border: 1px solid #69394f
     color: #fff
-    overflow: hidden
     cursor: pointer
     transition: .5s
     
@@ -84,7 +112,8 @@ $height: 30rem
   
   .viktorina_content 
     position: relative
-  
+  .viktorina_questions
+    padding: 3rem 0
 .city 
   position: relative
     
@@ -117,25 +146,25 @@ $height: 30rem
   transition: .5s
   position: relative
   width: 100%
-  height: $height
+  height: $heightLarge
   div
     backface-visibility: hidden
     position: absolute
     width: 100%
-    height: $height
+    height: $heightLarge
     background-size: auto 100%
     background-position: center
     background-repeat: no-repeat
 .points 
   display: flex
-  flex-flow: column wrap
+  flex-flow: row wrap
   justify-content: center
-  height: 100%
+  height: $heightSmall
   align-items: center
   position: absolute
-  right: 0
-  top: 0
-  width: auto
+  left: 0
+  bottom: -$heightSmall
+  width: 100%
   z-index: 2
   padding: 0.2rem
   div 
@@ -152,7 +181,9 @@ $height: 30rem
       border-color: #fff
 .bigsize-image-wrapper
   width: 100%
-  position: absolute
+  position: fixed
+  top: 0
+  left: 0
   background: rgba(0,0,0,0)
   z-index: -1
   display: flex
@@ -160,8 +191,8 @@ $height: 30rem
   align-items: center
   transition: .5s
   div
-    width: 500px
-    height: 500px
+    //max-width: 80%
+    max-height: 90%
     background-repeat: no-repeat
     background-size: 100% 100%
     opacity: 0
@@ -171,6 +202,7 @@ $height: 30rem
     border-radius: 10px
     border: 7px solid rgba(55, 124, 87, .9)
     box-shadow: inset 0 0 0 5px #fff
+
 .activated
   z-index: 10
   background: rgba(0,0,0,.5)
