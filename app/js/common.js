@@ -13,16 +13,16 @@ City.prototype.styles = function() {
   var bigImage = document.querySelector('.bigsize-image-wrapper');
   bigImage.style.height = document.documentElement.clientHeight + 'px';
   var list = this.wrapper.children;
-  var Ztranslate = (list[0].clientWidth/2) * Math.tan((90-(180/list.length))/57.2958);
+  var Ztranslate = (list[0].clientHeight/2) * Math.tan((90-(180/list.length))/57.2958);
   list.forEach = Array.prototype.forEach;
   this.wrapper.setAttribute("style", "transform-origin: 50% 50% -"  + Ztranslate + "px;");
   list.forEach(function(item,i) {
   var smallButtons = item.querySelector('.points').children;
 
   smallButtons.forEach = Array.prototype.forEach;
-  item.setAttribute("style", "transform: rotateY(" + (360/list.length)*i + "deg); transform-origin: 50% 50% -"  + Ztranslate + "px;");
+  item.setAttribute("style", "transform: rotateX(" + (360/list.length)*i + "deg); transform-origin: 50% 50% -"  + Ztranslate + "px;");
   var photos = item.querySelector('.photos');
-  var Ztranslate2 =  (photos.children[0].clientHeight/2) * Math.tan((90-(180/photos.children.length))/57.2958); 
+  var Ztranslate2 =  (photos.children[0].clientWidth/2) * Math.tan((90-(180/photos.children.length))/57.2958); 
   photos.setAttribute("style", "transform-origin: 50% 50% -"  + Ztranslate2 + "px;");
   photos.children.forEach = Array.prototype.forEach;
   photos.children.forEach(function(it,j) {
@@ -50,7 +50,7 @@ City.prototype.styles = function() {
   if (!j) {
     smallButtons[j].classList.add('checked');
   }  
-  it.style.transform =  "rotateX(" + (360/photos.children.length)*j + "deg)"; 
+  it.style.transform =  "rotateY(" + (360/photos.children.length)*j + "deg)"; 
   it.style.transformOrigin = "50% 50% -"  + Ztranslate2 + "px";
   /*
     it.setAttribute("style", "transform: rotateX(" + (360/photos.children.length)*j + "deg); transform-origin: 50% 50% -"  + Ztranslate2 + "px;");
@@ -58,14 +58,14 @@ City.prototype.styles = function() {
   }); 
   var ang = 0;
   photos.addEventListener('mousedown', function(e) {
-  var y = e.pageY;
+  var y = e.pageX;
   
     photos.onmouseup = function(q) {
-    if (q.pageY - y > 50) {
-      ang -= (360/photos.children.length) + 0.001; 
+    if (q.pageX - y > 50) {
+      ang += (360/photos.children.length) + 0.001; 
       
-  } else if (y - q.pageY  > 50) {
-    ang += (360/photos.children.length) - 0.001; 
+  } else if (y - q.pageX  > 50) {
+    ang -= (360/photos.children.length) - 0.001; 
     
   }  
     smallButtons.forEach(function(a,s) {
@@ -73,7 +73,7 @@ City.prototype.styles = function() {
     });
     var coef = Math.abs((Math.round(ang) %360))/(360/smallButtons.length)
     smallButtons[coef].classList.add('checked');
-    photos.style.transform = "rotateX(" + ang + "deg)"; 
+    photos.style.transform = "rotateY(" + ang + "deg)"; 
   }
   });
 
@@ -81,7 +81,7 @@ City.prototype.styles = function() {
   
   smallButtons.forEach(function(q,w) {
     q.addEventListener('click',function() {
-      photos.style.transform = "rotateX(" + (360/smallButtons.length)*w + "deg)";
+      photos.style.transform = "rotateY(" + (360/smallButtons.length)*w + "deg)";
       ang = (360/smallButtons.length)*w;
       smallButtons.forEach(function(a,s) {
         a.classList.remove('checked');
@@ -110,7 +110,7 @@ bigImage.firstElementChild.addEventListener('click', function() {
   var width = 540;
   function galleryspin(sign) { 
   if (!sign) { angle += 360/list.length; } else { angle -=360/list.length; }
-  self.wrapper.setAttribute("style","-webkit-transform: rotateY("+ angle +"deg) translatex(20%); -moz-transform: rotateY("+ angle +"deg) translatex(20%); transform: rotateY("+ angle +"deg) translatex(20%); transform-origin: 50% 50% -"  + Ztranslate + "px;");
+  self.wrapper.setAttribute("style","-webkit-transform: rotateX("+ angle +"deg) translatex(10%); -moz-transform: rotateX("+ angle +"deg) translatex(10%); transform: rotateX("+ angle +"deg) translatex(10%); transform-origin: 50% 50% -"  + Ztranslate + "px;");
   
   }
   this.buttons[0].addEventListener('click', function() {galleryspin(0)});
@@ -191,6 +191,8 @@ city.styles();
 window.addEventListener('resize',function() {
   city.styles();
 });
+
+document.getElementById('carousel').scrollIntoView();
 
 var answers = document.querySelector('.answers_list button');
 var ul = document.querySelector('.answers_list ul');
