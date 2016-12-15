@@ -163,3 +163,42 @@
     .points div.checked {
       background-color: rgba(55, 124, 87, 0.8);
       border-color: #fff; }
+
+.bigsize-image-wrapper {
+  width: 100%;
+  position: absolute;
+  background: transparent;
+  z-index: -1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: .5s;
+  transition: .5s; }
+  .bigsize-image-wrapper div {
+    width: 500px;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-border-radius: 10px;
+            border-radius: 10px;
+    border: 7px solid rgba(55, 124, 87, 0.9);
+    -webkit-box-shadow: inset 0 0 0 5px #fff;
+            box-shadow: inset 0 0 0 5px #fff; }
+
+.activated {
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5); }

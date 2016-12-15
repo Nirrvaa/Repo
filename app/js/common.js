@@ -2,14 +2,16 @@
 function City(cityItem,wrapper) {
   this.wrapper = document.getElementById(wrapper);
   cityItem.forEach(function(item,i) {
-  var memorial = new Memorial(item);
-  var li = memorial.makeItem(wrapper);
+  this.memorial = new Memorial(item);
+  var li = this.memorial.makeItem(wrapper);
   });
   this.buttons = document.querySelectorAll(".ss-icon");
   this.angle = 0;
 };
 City.prototype.styles = function() {
   var self = this;
+  var bigImage = document.querySelector('.bigsize-image-wrapper');
+  bigImage.style.height = document.documentElement.clientHeight + 'px';
   var list = this.wrapper.children;
   var Ztranslate = (list[0].clientWidth/2) * Math.tan((90-(180/list.length))/57.2958);
   list.forEach = Array.prototype.forEach;
@@ -24,6 +26,27 @@ City.prototype.styles = function() {
   photos.setAttribute("style", "transform-origin: 50% 50% -"  + Ztranslate2 + "px;");
   photos.children.forEach = Array.prototype.forEach;
   photos.children.forEach(function(it,j) {
+  var img = document.createElement('img');
+  img.setAttribute('src', it.style.backgroundImage.split('"')[1]);
+  it.addEventListener('click', function() {
+  var checkTime = new Date();
+    it.addEventListener('click', function() {
+      var checkTimeSecond = new Date();
+      if (checkTimeSecond - checkTime <= 500) {
+        bigImage.classList.add('activated');
+        var width = img.naturalWidth;
+        var height = img.naturalHeight;
+        bigImage.firstElementChild.style.backgroundImage = it.style.backgroundImage;
+        bigImage.firstElementChild.style.height = height + 'px';
+        bigImage.firstElementChild.style.width = width + 'px';
+        bigImage.firstElementChild.style.opacity = '1';
+      }
+
+    });
+  });  
+
+
+  
   if (!j) {
     smallButtons[j].classList.add('checked');
   }  
@@ -75,6 +98,13 @@ City.prototype.styles = function() {
   */ 
 
   }); 
+
+
+bigImage.firstElementChild.addEventListener('click', function() {
+    bigImage.classList.remove('activated');
+    bigImage.firstElementChild.style.opacity = '0';
+  });
+
 
   var angle = 0;
   var width = 540;

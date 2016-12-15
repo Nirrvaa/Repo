@@ -150,8 +150,28 @@ $height: 30rem
     &.checked
       background-color: rgba(55, 124, 87, .8);
       border-color: #fff
-  
-    
-      
-
+.bigsize-image-wrapper
+  width: 100%
+  position: absolute
+  background: rgba(0,0,0,0)
+  z-index: -1
+  display: flex
+  justify-content: center
+  align-items: center
+  transition: .5s
+  div
+    width: 500px
+    height: 500px
+    background-repeat: no-repeat
+    background-size: 100% 100%
+    opacity: 0
+    transition: .5s
+    cursor: pointer
+    background-color: rgba(255,255,255,0.7)
+    border-radius: 10px
+    border: 7px solid rgba(55, 124, 87, .9)
+    box-shadow: inset 0 0 0 5px #fff
+.activated
+  z-index: 10
+  background: rgba(0,0,0,.5)
     
