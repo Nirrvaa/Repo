@@ -92,8 +92,21 @@ var databaseArray = [
     memorialPhotos: ['img/tsvetok1.jpg','img/tsvetok2.jpg'],
     memorialId: 'Tsvetok' 
    }
-      
   ]
-  },
+  }
 ];
 
+var answersArray = [
+    'УФа',
+    'Красноярск',
+    'Барнаул',
+    'Иркутск',
+    'Кемерово',
+    'Рязань',
+    'Курск',
+    'Ставрополь',
+    'Нижний Тагил',
+    'Владимир',
+    'Пермь'
+    
+  ]

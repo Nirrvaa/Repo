@@ -102,7 +102,7 @@ City.prototype.styles = function() {
 
 bigImage.firstElementChild.addEventListener('click', function() {
     bigImage.classList.remove('activated');
-    bigImage.firstElementChild.style.opacity = '0';
+    bigImage.firstElementChild.classList.remove('answer-bar');
   });
 
 
@@ -186,7 +186,7 @@ Memorial.prototype.makeItem = function(item) {
   
   propperPlace.appendChild(li);
 }
-
+answersList(answersArray);
 var city = new City(databaseArray[0]['cityContent'],'spinner');
 city.styles();
 window.addEventListener('resize',function() {
@@ -194,6 +194,37 @@ window.addEventListener('resize',function() {
 });
 
 document.getElementById('carousel').scrollIntoView();
+
+
+function answersList(list) {
+  var answers = document.querySelector('.answers_list ul');
+  var bigImage = document.querySelector('.bigsize-image-wrapper');
+  var chooseYes = document.createElement('button');
+  var chooseNo = document.createElement('button');
+  var text = document.createElement('span');
+  chooseYes.appendChild(document.createTextNode('Да'));
+  chooseNo.appendChild(document.createTextNode('Нет'));
+  chooseYes.setAttribute('id', 'yes');
+  chooseNo.setAttribute('id', 'no');
+
+  list.forEach(function(item,i) {
+    var li = document.createElement('li');
+    li.appendChild(document.createTextNode(item));
+    li.addEventListener('click', function() {
+      text.innerHTML = 'Вы хотитие подтвердить свой выбор: ' + item + '?';
+      bigImage.classList.add('activated');
+        bigImage.firstElementChild.appendChild(text);
+        bigImage.firstElementChild.appendChild(chooseYes);
+        bigImage.firstElementChild.appendChild(chooseNo);
+        bigImage.firstElementChild.classList.add('answer-bar');
+    });
+    answers.appendChild(li);
+  
+
+  });
+}
+
+
 /*
 var answers = document.querySelector('.answers_list button');
 var ul = document.querySelector('.answers_list ul');

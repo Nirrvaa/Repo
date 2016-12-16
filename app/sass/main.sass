@@ -3,7 +3,6 @@ $heightLarge: 30rem
 $height: $heightLarge + $heightSmall
 $width: 95%
 $widthOfPIcturesSection: 80%
-
 #carousel 
   perspective: 300px
   font-size: 0
@@ -84,6 +83,7 @@ $widthOfPIcturesSection: 80%
 .viktorina
   background: #e7a458
   min-height: 100%
+
   .viktorina_header 
     background: rgba(255,255,255,0.3)
     
@@ -194,7 +194,35 @@ $widthOfPIcturesSection: 80%
 .activated
   z-index: 10
   background: rgba(0,0,0,.5)
-
+  .answer-bar
+    display: flex
+    flex-flow: row wrap
+    justify-content: center
+    width: 30%
+    height: auto;
+    background-color: #e9c25d
+    opacity: 1;
+    padding: 2rem
+    span
+      display: block
+      flex-basis: 100%
+      text-align: center
+      font-size: 2rem
+      font-family: impact
+      color: #fff;
+      text-shadow: 0 0 2px #000
+    button
+      display: block
+      flex-basis: 30%
+      margin: 2rem
+      padding: 1rem
+      box-shadow: 0 0 3px rgba(0,0,0,.8), inset 0 0 3px #FFF
+      font-family: impact
+      color: #fff;
+      text-shadow: 0 0 2px #000
+      font-size: 1.5rem
+      cursor: pointer
+      background-color: #377c57
 .viktorina_answers
   flex-basis: 100% - $widthOfPIcturesSection
   margin-top: .5rem;
@@ -207,12 +235,12 @@ $widthOfPIcturesSection: 80%
     display: flex
     justify-content: center
     align-items: center
-    height: 2.5rem
+    height: 4rem
     background-color: #377c57
     font-family: impact
     color: #fff
     text-shadow: 0 0 2px #000
-    font-size: 1.2rem
+    font-size: 2rem
 .answers_list
   width: 100%
   li
@@ -221,6 +249,7 @@ $widthOfPIcturesSection: 80%
     justify-content: center
     height: 3rem
     font-family: impact
+    font-size: 1.25rem
     color: #fff
     text-shadow: 0 0 2px #000
     background-color: rgba(255,255,255,0.5)
@@ -233,3 +262,5 @@ $widthOfPIcturesSection: 80%
     &:hover
       background-color: #e9c25d
       box-shadow: 0 0 3px rgba(0,0,0,.8)
+  
+

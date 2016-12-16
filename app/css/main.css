@@ -229,6 +229,48 @@
 .activated {
   z-index: 10;
   background: rgba(0, 0, 0, 0.5); }
+  .activated .answer-bar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 30%;
+    height: auto;
+    background-color: #e9c25d;
+    opacity: 1;
+    padding: 2rem; }
+    .activated .answer-bar span {
+      display: block;
+      -webkit-flex-basis: 100%;
+          -ms-flex-preferred-size: 100%;
+              flex-basis: 100%;
+      text-align: center;
+      font-size: 2rem;
+      font-family: impact;
+      color: #fff;
+      text-shadow: 0 0 2px #000; }
+    .activated .answer-bar button {
+      display: block;
+      -webkit-flex-basis: 30%;
+          -ms-flex-preferred-size: 30%;
+              flex-basis: 30%;
+      margin: 2rem;
+      padding: 1rem;
+      -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.8), inset 0 0 3px #FFF;
+              box-shadow: 0 0 3px rgba(0, 0, 0, 0.8), inset 0 0 3px #FFF;
+      font-family: impact;
+      color: #fff;
+      text-shadow: 0 0 2px #000;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background-color: #377c57; }
 
 .viktorina_answers {
   -webkit-flex-basis: 20%;
@@ -261,12 +303,12 @@
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 2.5rem;
+    height: 4rem;
     background-color: #377c57;
     font-family: impact;
     color: #fff;
     text-shadow: 0 0 2px #000;
-    font-size: 1.2rem; }
+    font-size: 2rem; }
 
 .answers_list {
   width: 100%; }
@@ -285,6 +327,7 @@
             justify-content: center;
     height: 3rem;
     font-family: impact;
+    font-size: 1.25rem;
     color: #fff;
     text-shadow: 0 0 2px #000;
     background-color: rgba(255, 255, 255, 0.5);
