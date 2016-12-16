@@ -109,8 +109,9 @@ bigImage.firstElementChild.addEventListener('click', function() {
   var angle = 0;
   var width = 540;
   function galleryspin(sign) { 
+
   if (!sign) { angle += 360/list.length; } else { angle -=360/list.length; }
-  self.wrapper.setAttribute("style","-webkit-transform: rotateX("+ angle +"deg) translatex(10%); -moz-transform: rotateX("+ angle +"deg) translatex(10%); transform: rotateX("+ angle +"deg) translatex(10%); transform-origin: 50% 50% -"  + Ztranslate + "px;");
+  self.wrapper.setAttribute("style","-webkit-transform: rotateX("+ angle +"deg) translatex(2.5%); -moz-transform: rotateX("+ angle +"deg) translatex(2.5%); transform: rotateX("+ angle +"deg) translatex(2.5%); transform-origin: 50% 50% -"  + Ztranslate + "px;");
   
   }
   this.buttons[0].addEventListener('click', function() {galleryspin(0)});
@@ -193,7 +194,7 @@ window.addEventListener('resize',function() {
 });
 
 document.getElementById('carousel').scrollIntoView();
-
+/*
 var answers = document.querySelector('.answers_list button');
 var ul = document.querySelector('.answers_list ul');
 answers.addEventListener('click',function() {
@@ -203,4 +204,4 @@ answers.addEventListener('click',function() {
     ul.classList.remove('opened');
   }
 });
-
+*/

@@ -1,7 +1,9 @@
 $heightSmall: 3rem
 $heightLarge: 30rem
 $height: $heightLarge + $heightSmall
-$width: 80%
+$width: 95%
+$widthOfPIcturesSection: 80%
+
 #carousel 
   perspective: 300px
   font-size: 0
@@ -15,44 +17,26 @@ $width: 80%
     text-decoration: none
     transition: .2s
     position: absolute
-    line-height: 0
-    width: $width/2
+    width: $width
     cursor: pointer
-    left: (100% - $width)*1.5
-    border-radius: 15px
+    left: (100% - $width)/2
+    //border-radius: 15px
     background-color: rgba(255,255,255,0.4)
-    border: 2px solid rgba(0,0,0,0.4)
-    height: 2.1rem
+    //border: 2px solid rgba(0,0,0,0.4)
+    font-size: 2.5rem
+    text-align: center
+    color: rgba(55, 124, 87, .8);
+    span
+      margin: 0 auto
+      transition: .2s
+    &:hover span
+        color: #fff
     &:hover 
-      background-color: rgba(0,0,0,0.5)
+      background-color: rgba(55, 124, 87, .8);
     &:nth-of-type(1)
-      top: -2.5rem
-      div 
-        border-top: 0rem solid transparent
-        border-bottom: 1.5rem solid rgba(0,0,0,0.5)
-        border-left: 10rem solid transparent
-        border-right: 10rem solid transparent
-        margin: auto
-        width: 20rem
-        line-height: 0
-        transition: .2s
-    &:hover
-      &:nth-of-type(1) div
-        border-bottom: 1.5rem solid rgb(241,200,155)
-    &:hover
-      &:nth-of-type(2) div
-        border-top: 1.5rem solid rgb(241,200,155)    
+      top: -3rem
     &:nth-of-type(2) 
-      bottom: -2rem
-      div
-        border-bottom: 0rem solid transparent
-        border-top: 1.5rem solid rgba(0,0,0,0.5)
-        border-left: 10rem solid transparent
-        border-right: 10rem solid transparent
-        margin: auto
-        width: 20rem
-        line-height: 0
-        transition: .2s
+      bottom: -2.5rem
 #spinner  
   transform-style: preserve-3d
   transform: translateX((100% - $width)/2)
@@ -99,7 +83,7 @@ $width: 80%
         
 .viktorina
   background: #e7a458
-  
+  min-height: 100%
   .viktorina_header 
     background: rgba(255,255,255,0.3)
     
@@ -112,8 +96,12 @@ $width: 80%
   
   .viktorina_content 
     position: relative
+    display: flex
+    flex-flow: row nowrap
+    //align-items: center
   .viktorina_questions
-    padding: 3rem 0
+    padding: 3.5rem 0
+    flex-basis: $widthOfPIcturesSection
 .city 
   position: relative
     
@@ -206,4 +194,42 @@ $width: 80%
 .activated
   z-index: 10
   background: rgba(0,0,0,.5)
-    
+
+.viktorina_answers
+  flex-basis: 100% - $widthOfPIcturesSection
+  margin-top: .5rem;
+  padding: 0;
+  display: flex
+  flex-flow: column nowrap
+  align-items: center
+  header
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 2.5rem
+    background-color: #377c57
+    font-family: impact
+    color: #fff
+    text-shadow: 0 0 2px #000
+    font-size: 1.2rem
+.answers_list
+  width: 100%
+  li
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 3rem
+    font-family: impact
+    color: #fff
+    text-shadow: 0 0 2px #000
+    background-color: rgba(255,255,255,0.5)
+    cursor: pointer
+    transition: .1s
+    border: 1px solid rgba(0,0,0,.3)
+    border-bottom: 0px none
+    &:last-child
+      border-bottom: 1px solid rgba(0,0,0,.3)
+    &:hover
+      background-color: #e9c25d
+      box-shadow: 0 0 3px rgba(0,0,0,.8)
